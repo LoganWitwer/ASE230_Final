@@ -10,11 +10,11 @@
 <?php
 session_start();
 require_once('../Settings/settings.php');
-require_once('../User/userClass.php');
+// require_once('../User/userClass.php');
 if(count($_POST)>0){
     //User::create();
-    $query=$connection->prepare('INSERT INTO user (name, email, password, isAdmin) VALUES (?)');
-    $query->execute([$_POST['fullName']], [$_POST['email']], [$_POST['password']], '0');
+    $query=$connection->prepare('INSERT INTO user (name, email, password, isAdmin) VALUES (?,?,?,?)');
+    $query->execute([$_POST['fullName'], $_POST['email'], $_POST['password'], '0']);
     
     
     //$query=$connection->prepare('INSERT INTO user (name, email, password, isAdmin) VALUES (?)');
