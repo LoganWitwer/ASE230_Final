@@ -1,12 +1,9 @@
 <?php
+session_start();
 require_once('../Settings/settings.php');
-require_once('../Items/itemClass.php');
-$restaurant=$_GET['id'];
+require_once('itemClass.php');
 if(count($_POST)>0){
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    $itemName = $_POST['itemName'];
-    Item::create($connection, $description, $price, $itemName, $restaurant);
+    Item::modify($connection, $_POST['description'], $_POST['price'], $_POST['itemName']);
 }
 ?>
 <form method="POST">
