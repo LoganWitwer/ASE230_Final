@@ -4,12 +4,13 @@ if(count($_POST)>0){
     require_once('../Settings/settings.php');
     require_once('../Auth/authClass.php');
     $email=$_POST['email'];
-    //$password=$_POST['password'];
     $test=Auth::signin($connection, $email, $_POST['password']);
-    if($test==true){
-        header('location: ../Pages/admin_page.php');
-    } else{
-        
+    if($test==true && $_SESSION['role']==1){
+        header('location: ../Restaurant/index.php');
+    } else if ($test==true){
+        header('location: ../Pages/members_page.php');
+    } else {
+
     }
 }
 

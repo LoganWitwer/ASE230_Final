@@ -17,6 +17,7 @@ class Restaurant{
             <td>'.$result['name'].'</td>
             <td><a href="delete.php?id='.$result['restaurantID'].'">Delete</a></td>
             <td><a href="modify.php?id='.$result['restaurantID'].'">Modify</a></td>
+            <td><a href="../Items/index.php?id='.$result['restaurantID'].'">View Items for this Restaurant.</a></td>
         </tr>
         </table>';
     }
@@ -24,7 +25,14 @@ class Restaurant{
     }
 
     public static function delete($connection, $delete){
+        $query=$connection->prepare('DELETE FROM restaurant WHERE restaurantID=?');
+        $query->execute([$delete]);
+        echo 'Successfully deleted.';
+    }
 
+    public static function modify($connection, $name, $address, $category){
+        $query=$connection->prepare('UPDATE restaurant SET `name` = ?, `address` = ?, `category` = ?');
+        $query->execute([$name, $address, $category]);
     }
 
 }

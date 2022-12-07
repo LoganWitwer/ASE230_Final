@@ -23,6 +23,7 @@ class Auth{
         $_SESSION['ID']=$result['userID'];
         $_SESSION['role']=$result['isAdmin'];
         $_SESSION['name']=$result['name'];
+        if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
         return true;
     }
 

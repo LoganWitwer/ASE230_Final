@@ -19,4 +19,5 @@ require_once('../Auth/authClass.php');
 if(count($_POST)>0){
 	$password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     AUTH::signup($connection, $_POST['fullName'], $_POST['email'], $password, $_POST['admin']);
+	header('location: ../Pages/visitor_page.php');
 }

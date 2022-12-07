@@ -1,12 +1,9 @@
-
 <?php
+session_start();
 require_once('../Settings/settings.php');
-require_once('../Restaurant/restaurantClass.php');
+require_once('restaurantClass.php');
 if(count($_POST)>0){
-    $name = $_POST['name'];
-    $address = $_POST['address'];
-    $category = $_POST['category'];
-    Restaurant::create($connection, $name, $address, $category);
+    Restaurant::modify($connection, $_POST['name'], $_POST['address'], $_POST['category']);
 }
 ?>
 <form method="POST">
@@ -15,4 +12,3 @@ if(count($_POST)>0){
     Category: <input type="text" name="category" /><br>
     <input type="submit" value="Submit" />
 </form>
-        
