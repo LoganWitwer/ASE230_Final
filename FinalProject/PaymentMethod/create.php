@@ -10,10 +10,13 @@
 <?php
 session_start();
 require_once('../Settings/settings.php');
+require_once('../PaymentMethod/paymentClass.php');
 
 if(count($_POST)>0){
-
-    $query=$connection->prepare('INSERT INTO paymentmethod (name, cardType, cardNumber, expirationDate, cvc) VALUES (?,?,?,?,?)');
-    echo $_POST['name'];
-    $query->execute([$_POST['cardname'], $_POST['type'], $_POST['number'], $_POST['expire'], $_POST['cvc']]);
+    $name = $_POST['cardname'];
+    $cardtype = $_POST['type'];
+    $number = $_POST['number'];
+    $expire = $_POST['expire'];
+    $cvc = $_POST['cvc'];
+    Payment::create($connection, $name, $cardtype, $number, $expire, $cvc);
 }
