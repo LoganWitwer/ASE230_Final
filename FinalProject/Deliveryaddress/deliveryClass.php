@@ -8,9 +8,10 @@ class Delivery{
         echo "You have successfully add your delivery address";
     }
 
-    public static function read($connection){
+    public static function read($connection,$ID){
         //if SESSION['role']==1; list each item with delete, and modify links that include the restaurant ID
-        $query=$connection->query('SELECT deliveryID, `street`,`city`, `state`, `zip_code` FROM deliveryaddress');
+        $query=$connection->prepare('SELECT deliveryID, `street`,`city`, `state`, `zip_code` FROM deliveryaddress WHERE userID = ?');
+        $query->exucute([$ID]);
         while($result=$query->fetch()){
          echo '<table>
          <tr>
