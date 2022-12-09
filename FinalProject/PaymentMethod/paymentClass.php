@@ -8,10 +8,12 @@ class Payment{
         echo "Payment method successfully inputed";
     }
 
-    public static function read($connection){
+    public static function read($connection, $ID){
         //if SESSION['role']==1; list each item with delete, and modify links that include the restaurant ID
-        $query=$connection->query('SELECT `paymentID`,`name`, `cardType`, `cardNumber` FROM paymentmethod');
+        $query=$connection->prepare('SELECT `paymentID`,`name`, `cardType`, `cardNumber` FROM paymentmethod WHERE userID = ?');
+        $query->execute([$ID]);
         while($result=$query->fetch()){
+            print_r($result);
          echo '<table>
          <tr>
              <td>'.$result['name'].'</td>
