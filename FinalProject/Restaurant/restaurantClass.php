@@ -10,27 +10,39 @@ class Restaurant{
 
     public static function read($connection, $role){
         //if SESSION['role']==1 list each item with delete, and modify links that include the restaurant ID
+        $query=$connection->query('SELECT `name`, `restaurantID`, description FROM restaurant');
         if($role==1){
-            $query=$connection->query('SELECT `name`, `restaurantID` FROM restaurant');
             while($result=$query->fetch()){
-                echo '<table>
-                <tr>
-                    <td>'.$result['name'].'</td>
-                    <td><a href="delete.php?id='.$result['restaurantID'].'">Delete</a></td>
-                    <td><a href="modify.php?id='.$result['restaurantID'].'">Modify</a></td>
-                    <td><a href="../Items/index.php?id='.$result['restaurantID'].'">View Items for this Restaurant.</a></td>
-                </tr>
-                </table>';
+                echo '
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$result['name'].'</h5>
+                            <p class="card-text">'.$result['description'].'</p>
+                            <button type="button" class="btn btn-info"><a href="delete.php?id='.$result['restaurantID'].' class="btn btn-primary">Delete</a></button>
+                            <button type="button" class="btn btn-info"><a href="modify.php?id='.$result['restaurantID'].'class="btn btn-primary">Modify</a></button>
+                            <button type="button" class="btn btn-info"><a href="../Items/index.php?id='.$result['restaurantID'].'class="btn btn-primary">View Items for this Restaurant.</a></button>
+                        </div>
+                    </div>
+                </div>
+                ';
+
+                
             }
         } else {//else list each restaurant with order options
-            $query=$connection->query('SELECT `name`, `restaurantID` FROM restaurant');
             while($result=$query->fetch()){
-                echo '<table>
-                <tr>
-                    <td>'.$result['name'].'</td>
-                    <td><a href="../Restaurant/detail.php?id='.$result['restaurantID'].'">Order from this restaurant.</a></td>
-                </tr>
-                </table>';
+                echo '
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">'.$result['name'].'</h5>
+                            <p class="card-text">'.$result['description'].'</p>
+                            <button type="button" class="btn btn-info"><a href="../Restaurant/detail.php?id='.$result['restaurantID'].'">Order from this restaurant.</a></button>
+                        </div>
+                    </div>
+                </div>
+                
+                ';
             }
         }
        

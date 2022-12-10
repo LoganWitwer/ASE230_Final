@@ -28,10 +28,6 @@ foreach($orderitems as $order){
 
     }
 
-
-
-
-
 ?>
 
 <form method="POST">
@@ -57,3 +53,4 @@ foreach($orderitems as $order){
     <input type="submit">
 
 </form>
+
