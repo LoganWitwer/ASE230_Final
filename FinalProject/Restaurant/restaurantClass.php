@@ -54,9 +54,9 @@ class Restaurant{
         echo 'Successfully deleted.';
     }
 
-    public static function modify($connection, $name, $address, $category){
-        $query=$connection->prepare('UPDATE restaurant SET `name` = ?, `address` = ?, `category` = ?');
-        $query->execute([$name, $address, $category]);
+    public static function modify($connection, $name, $address, $category, $description, $id){
+        $query=$connection->prepare('UPDATE restaurant SET `name` = ?, `address` = ?, `category` = ?, `description` = ? WHERE restaurantID = ?');
+        $query->execute([$name, $address, $category, $description, $id]);
     }
 
     public static function detail($connection, $restaurantID){
