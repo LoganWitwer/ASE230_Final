@@ -18,8 +18,8 @@ class Item{
                 <div class = "border">
                 <div>
                     <h5>'.$result['itemName'].' $'.$result['price'].'</h5>
-                    <td><a href="delete.php?id='.$result['itemID'].'">Delete</a></td>
-                    <td><a href="modify.php?id='.$result['itemID'].'">Modify</a></td>
+                    <td><a href="delete.php?id='.$result['itemID'].'&&restaurant='.$_GET['id'].'">Delete</a></td>
+                    <td><a href="modify.php?id='.$result['itemID'].'&&restaurant='.$_GET['id'].'">Modify</a></td>
                 </div>
                 </div>
                 ';

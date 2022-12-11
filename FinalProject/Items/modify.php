@@ -14,10 +14,10 @@ if(count($_POST)>0){
     Item Name: <input type="text" name="itemName" /><br>
     Description: <input type="text" name="description" /><br>
     Price: <input type="text" name="price" /><br>
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit" /><a href="index.php?id=<?=$_GET['restaurant']?>">Back</a>
 </form>
 
-<p class="center"><a href="../Pages/members_page.php">Back</a></p>
+<p class="center"></p>
 
 </div>
 
