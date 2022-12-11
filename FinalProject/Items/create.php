@@ -6,6 +6,7 @@ if(count($_POST)>0){
     $description = $_POST['description'];
     $price = $_POST['price'];
     $itemName = $_POST['itemName'];
+    $restaurant = $_GET['id'];
     Item::create($connection, $description, $price, $itemName, $restaurant);
 }
 ?>
@@ -15,3 +16,5 @@ if(count($_POST)>0){
     Item Name: <input type="text" name="itemName" /><br>
     <input type="submit" value="Submit" />
 </form>
+<?php
+echo '<a href="index.php?id='.$restaurant.'">Back</a>';
