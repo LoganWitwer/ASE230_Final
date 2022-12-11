@@ -83,9 +83,9 @@ class Restaurant{
             <div class="card col-sm-3" id="space">
             <div class="card-body">
             <h5 class="card-title">'.$result2['itemName'].'</h5>
-            <h6 class="card-subtitle mb-2 text-muted">'.$result2['description'].'</h6>
-            '.$result2['price'].'
-            <button id = "left-space" ><a href="../Order/cart.php?id='.$result2['itemID'].'&&restaurant='.$restaurantID.'">Add to cart.</a></button>
+            <h6 class="card-subtitle mb-2 text-muted">'.$result2['description'].'</h6> <p>$
+            '.$result2['price'].'</p>
+            <button class="btn btn-info" ><a href="../Order/cart.php?id='.$result2['itemID'].'&&restaurant='.$restaurantID.'">Add to cart.</a></button>
             </div></div>
             ';
             
