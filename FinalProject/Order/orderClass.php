@@ -12,4 +12,21 @@ class Order{
             $query3->execute([$orderID, $order]);
         }
     }
+
+    public static function history($connection){
+        $query_order=$connection->prepare('SELECT userID, restaurantID, orderID, orderTime, price, paymentID, deliveryID FROM foodorder WHERE userID = ?');
+        $query_order->execute([$_SESSION['ID']]);
+        echo '<div class = "row justify">';
+        while($result=$query_order->fetch()){
+            echo '<div  id = "border">';
+            $query_o=$connection->prepare('SELECT orderID, ordereditems.itemID, itemName, price FROM ordereditems LEFT JOIN items ON ordereditems.itemID = items.itemID WHERE orderID = ?');
+            $query_o->execute([$result['orderID']]);
+            echo ' <h6> OrderID#'.$result['orderID'].' '.$result['orderTime'].' $'.$result['price'].'</h6>';
+            while($items=$query_o->fetch()){
+                echo '<p>'.$items["itemName"]." $".$items["price"].'</p>';
+        }
+            echo '</div>';
+    }
+    echo '</div>';
+}
 }

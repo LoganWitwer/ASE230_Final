@@ -9,7 +9,7 @@ if(count($_POST)>0){
     $email=$_POST['email'];
     $test=Auth::signin($connection, $email, $_POST['password']);
     if($test==true && $_SESSION['role']==1){
-        header('location: ../Restaurant/index.php');
+        header('location: ../Pages/members_page.php');
     } else if ($test==true){
         header('location: ../Pages/members_page.php');
     } else {
@@ -25,7 +25,7 @@ if(count($_POST)>0){
     <input type="password" name="password" /><br><br>
     <button class="btn btn-info" type="submit" value="Submit">Sign in</button>
     <div>Not a member?<br> <a href="../Auth/signup.php">Sign Up!</a></div>
-</form><hr />
+</form>
 
 <?php
 require_once("../Asset/footer.php");

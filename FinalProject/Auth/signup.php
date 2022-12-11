@@ -24,6 +24,10 @@ require_once("../Asset/header.php");
 require_once('../Settings/settings.php');
 require_once('../Auth/authClass.php');
 if(count($_POST)>0){
+	if (strlen($_POST['password']) < 7 && $_POST['password'] > 16) {
+		echo 'Please enter a password between 8 and 16 characters';
+		return false;
+	}
 	$password=password_hash($_POST['password'],PASSWORD_DEFAULT);
     if(AUTH::signup($connection, $_POST['fullName'], $_POST['email'], $password, $_POST['admin'])){
 		header('location: ../Auth/signin.php');

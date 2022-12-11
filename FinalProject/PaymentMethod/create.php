@@ -15,14 +15,20 @@ if(count($_POST)>0){
 }
 ?>
 
-<form method="POST" class ="center-screen">
+<div class ="center-screen">
+
+<form method="POST">
     Name on Card: <input type="text" name="cardname" /><br>
     CardType: <input type="text" name="type" /><br>
     CardNumber: <input type="text" name="number" /><br>
-    Expiration Date: <input type="text" name="expire" /><br>
+    Expiration Date: <input type="date" name="expire" min= <?=date("Y-m-d")?> max="2040-12-31" /><br>
     cvc: <input type="text" name="cvc" /><br>
 	<input type="submit" value="Submit" />
-</form><hr />
+</form>
+
+<p id="rest"><a href="../Pages/members_page.php">Back</a></p>
+
+</div>
 
 <?php
 require_once("../Asset/footer.php");

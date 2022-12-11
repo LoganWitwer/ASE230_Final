@@ -12,15 +12,19 @@ class Item{
         if($role==1){
             $query=$connection->prepare('SELECT `itemName`, `description`, `price`, `itemID` FROM items WHERE `restaurantID`=?');
             $query->execute([$restaurantID]);
+            echo '<div class = "row justify">';
             while($result=$query->fetch()){
-                echo '<table>
-                    <tr>
-                        <td>'.$result['itemName'].'</td>
-                        <td><a href="delete.php?id='.$result['itemID'].'">Delete</a></td>
-                        <td><a href="modify.php?id='.$result['itemID'].'">Modify</a></td>
-                    </tr>
-                </table>';
+                echo '
+                <div class = "border">
+                <div>
+                    <h5>'.$result['itemName'].' $'.$result['price'].'</h5>
+                    <td><a href="delete.php?id='.$result['itemID'].'">Delete</a></td>
+                    <td><a href="modify.php?id='.$result['itemID'].'">Modify</a></td>
+                </div>
+                </div>
+                ';
             }
+            echo '</div>';
         } /*else {//else; list each item with order options
             $query=$connection->prepare('SELECT `itemName`, `description`, `price`, `itemID` FROM items WHERE `restaurantID`=?');
             $query->execute([$restaurantID]);

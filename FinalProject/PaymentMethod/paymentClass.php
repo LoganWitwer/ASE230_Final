@@ -12,16 +12,19 @@ class Payment{
         //if SESSION['role']==1; list each item with delete, and modify links that include the restaurant ID
         $query=$connection->prepare('SELECT `paymentID`,`name`, `cardType`, `cardNumber` FROM paymentmethod WHERE userID = ?');
         $query->execute([$ID]);
+        echo '<div class = "row justify">';
         while($result=$query->fetch()){
-            print_r($result);
-         echo '<table>
-         <tr>
-             <td>'.$result['name'].'</td>
-             <td><a href="delete.php?id='.$result['paymentID'].'">Delete</a></td>
-             <td><a href="modify.php?id='.$result['paymentID'].'">Modify</a></td>
-         </tr>
-         </table>';
+         echo '
+                <div class = "border">
+                <div>
+                    <h5>'.$result['name'].' '.preg_replace( "#(.*?)(\d{4})$#", "$2", $result['cardNumber']).'</h5>
+                    <button type="button" class="btn btn-info"><a href="delete.php?id='.$result['paymentID'].'">Delete</a></button>
+                    <button type="button" class="btn btn-info"><a href="modify.php?id='.$result['paymentID'].'">Modify</a></button>
+                </div>
+                </div>
+         ';
      }
+     echo '</div>';
      }
 
      public static function delete($connection, $ID){

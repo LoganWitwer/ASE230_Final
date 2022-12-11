@@ -14,13 +14,20 @@ if(count($_POST)>0){
 }
 
 ?>
-<form method="POST" class ="center-screen">
+
+<div class ="center-screen">
+
+<form method="POST">
     Street: <input type="text" name="street" /><br>
     City: <input type="text" name="city" /><br>
     State: <input type="text" name="state" /><br>
     Zip Code: <input type="text" name="zip_code" /><br>
 	<input type="submit" value="Submit" />
-</form><hr />
+</form>
+
+<p id="rest"><a href="../Pages/members_page.php">Back</a></p>
+
+</div>
 
 <?php
 require_once("../Asset/footer.php");

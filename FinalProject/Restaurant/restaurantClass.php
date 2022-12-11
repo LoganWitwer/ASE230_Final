@@ -12,6 +12,7 @@ class Restaurant{
         //if SESSION['role']==1 list each item with delete, and modify links that include the restaurant ID
         $query=$connection->query('SELECT `name`, `restaurantID`, description FROM restaurant');
         if($role==1){
+            echo '<div class="row">';
             while($result=$query->fetch()){
                 echo '
                 <div class="col-sm-4">
@@ -19,9 +20,10 @@ class Restaurant{
                         <div class="card-body">
                             <h5 class="card-title">'.$result['name'].'</h5>
                             <p class="card-text">'.$result['description'].'</p>
-                            <button type="button" class="btn btn-info"><a href="delete.php?id='.$result['restaurantID'].' class="btn btn-primary">Delete</a></button>
-                            <button type="button" class="btn btn-info"><a href="modify.php?id='.$result['restaurantID'].'class="btn btn-primary">Modify</a></button>
-                            <button type="button" class="btn btn-info"><a href="../Items/index.php?id='.$result['restaurantID'].'class="btn btn-primary">View Items for this Restaurant.</a></button>
+                            <button type="button" class="btn btn-info"><a href="../Restaurant/delete.php?id='.$result['restaurantID'].'">Delete</a></button>
+                            <button type="button" class="btn btn-info"><a href="../Restaurant/modify.php?id='.$result['restaurantID'].'">Modify</a></button>
+                            <button type="button" class="btn btn-info"><a href="../Items/index.php?id='.$result['restaurantID'].'">View Items for this Restaurant.</a></button>
+                            <button type="button" class="btn btn-info"><a href="../Restaurant/detail.php?id='.$result['restaurantID'].'">Order from this restaurant.</a></button>
                         </div>
                     </div>
                 </div>
@@ -29,7 +31,9 @@ class Restaurant{
 
                 
             }
+            echo '</div>';
         } else {//else list each restaurant with order options
+            echo '<div class="row">';
             while($result=$query->fetch()){
                 echo '
                 <div class="col-sm-4">
@@ -44,6 +48,7 @@ class Restaurant{
                 
                 ';
             }
+            echo '</div>';
         }
        
     }
@@ -66,20 +71,27 @@ class Restaurant{
         $query2=$connection->prepare('SELECT `description`, `price`, `itemName`, `itemID` FROM items WHERE `restaurantID`=?');
         $query2->execute([$restaurantID]);
         while($result=$query->fetch()){
-            echo '<h1>'.$result['name'].'</h1><br>'.$result['category'].'<br>'.$result['description'].'<br>'.$result['address'].'<hr />';
+            echo '<h1 id = "rest">'.$result['name'].'</h1><br><h5 id = "rest">'
+            .$result['category'].', '.
+            $result['description'].', '.
+            $result['address'].'</h5><hr />';
         }
-        echo '<table>';
+        echo '<div class="row justify"  >
+        ';
         while($result2=$query2->fetch()){
             echo '
-            <tr>
-            <td>'.$result2['itemName'].'</td>
-            <td>'.$result2['description'].'</td>
-            <td>'.$result2['price'].'</td>
-            <td><a href="../Order/cart.php?id='.$result2['itemID'].'&&restaurant='.$restaurantID.'">Add to cart.</a></td>
-            </tr>';
+            <div class="card col-sm-3" id="space">
+            <div class="card-body">
+            <h5 class="card-title">'.$result2['itemName'].'</h5>
+            <h6 class="card-subtitle mb-2 text-muted">'.$result2['description'].'</h6>
+            '.$result2['price'].'
+            <button id = "left-space" ><a href="../Order/cart.php?id='.$result2['itemID'].'&&restaurant='.$restaurantID.'">Add to cart.</a></button>
+            </div></div>
+            ';
             
         }
-        echo '<tr><td><a href="../Pages/members_page.php">Back</a></td></tr></table>';
+        echo '</div>
+        </div>';
         
     }
 

@@ -18,10 +18,6 @@ if($_SESSION['logged']==false){
         
     </div>
     <br>
-    <button type="button" class="btn btn-primary"><a href="../Order/checkout.php"> Place Order </a></button>
-    <button type="button" class="btn btn-primary"><a href="../Auth/signout.php"> Sign out</a></button>
-    <button type="button" class="btn btn-primary"><a href="../Deliveryaddress/create.php"> Add Delivery Address </a></button>
-    <button type="button" class="btn btn-primary"><a href="../PaymentMethod/create.php"> Add Payment Card </a></button>
 
 </body>
 

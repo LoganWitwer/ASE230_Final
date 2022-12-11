@@ -11,16 +11,20 @@ class Delivery{
     public static function read($connection,$ID){
         //if SESSION['role']==1; list each item with delete, and modify links that include the restaurant ID
         $query=$connection->prepare('SELECT deliveryID, `street`,`city`, `state`, `zip_code` FROM deliveryaddress WHERE userID = ?');
-        $query->exucute([$ID]);
+        $query->execute([$ID]);
+        echo '<div class = "row justify">';
         while($result=$query->fetch()){
-         echo '<table>
-         <tr>
-             <td>'.$result['street'].' '.$result['city'].' '.$result['state'].' '.$result['zip_code'].'</td>
-             <td><a href="delete.php?id='.$result['deliveryID'].'">Delete</a></td>
-             <td><a href="modify.php?id='.$result['deliveryID'].'">Modify</a></td>
-         </tr>
-         </table>';
+         echo '
+         <div class = "border">
+                <div>
+                    <h5>'.$result['street'].' '.$result['city'].' '.$result['state'].' '.$result['zip_code'].'</h5>
+                    <button type="button" class="btn btn-info"><a href="delete.php?id='.$result['deliveryID'].'">Delete</a></button>
+                    <button type="button" class="btn btn-info"><a href="modify.php?id='.$result['deliveryID'].'">Modify</a></button>
+                </div>
+                </div>
+         ';
      }
+     echo '</div>';
      }
 
 
