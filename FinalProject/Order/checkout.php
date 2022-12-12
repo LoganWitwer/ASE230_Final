@@ -46,7 +46,7 @@ foreach($orderitems as $order){
 ?>
 
 <form method="POST">
-    <label for="payment">Payment Address:</label>
+    <label for="payment">Payment Method:</label>
     <select id="payment" name="payment">
     <?php
     while($result1=$query1->fetch()){
@@ -55,7 +55,7 @@ foreach($orderitems as $order){
     ?>
     </select><br>
 
-    <label for="delivery">Delivery Method:</label>
+    <label for="delivery">Delivery Address:</label>
     <select id="delivery" name="delivery">
     <?php
     $query2=$connection->prepare('SELECT * FROM deliveryAddress WHERE userID = ?');
