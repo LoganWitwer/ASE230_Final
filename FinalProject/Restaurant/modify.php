@@ -9,8 +9,9 @@ if(count($_POST)>0){
     Restaurant::modify($connection, $_POST['name'], $_POST['address'], $_POST['category'], $_POST['description'], $restaurant);
 }
 ?>
-<div class ="center-screen">
 
+<div class ="center-screen">
+<h2 class = "page-title">Modify Restaurants</h2>
 <form method="POST" >
     Name: <input type="text" name="name" /><br>
     Address: <input type="text" name="address" /><br>

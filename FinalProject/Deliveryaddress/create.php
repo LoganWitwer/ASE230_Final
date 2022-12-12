@@ -14,7 +14,7 @@ if(count($_POST)>0){
 }
 
 ?>
-
+<h2 class = "page-title">Create Delivery Address</h2>
 <div class ="center-screen">
 
 <form method="POST">

@@ -9,6 +9,7 @@ if(count($_POST)>0){
 }
 ?>
 <div class ="center-screen">
+<h2 class = "page-title" id="pad">Modify Item</h2>
 
 <form method="POST">
     Item Name: <input type="text" name="itemName" /><br>

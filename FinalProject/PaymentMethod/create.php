@@ -14,7 +14,7 @@ if(count($_POST)>0){
     Payment::create($connection, $name, $cardtype, $number, $expire, $cvc);
 }
 ?>
-
+<h2 class = "page-title" id="pad">Create Payment</h2>
 <div class ="center-screen">
 
 <form method="POST">

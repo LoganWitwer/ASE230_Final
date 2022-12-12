@@ -5,7 +5,7 @@ require_once('restaurantClass.php');
 require_once("../Asset/head.php");
 require_once("../Asset/header.php");
 ?>
-
+<h2 class = "page-title">Restaurants</h2>
 <?php
 
 if($_SESSION['role']==1){

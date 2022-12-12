@@ -19,7 +19,7 @@ if(count($_POST)>0){
 ?>
 
 <div class ="center-screen">
-
+<h2 class = "page-title" id="pad">Modify Payment</h2>
 <form method="POST">
     Name on Card: <input type="text" name="cardname" /><br>
     CardType: <input type="text" name="type" /><br>

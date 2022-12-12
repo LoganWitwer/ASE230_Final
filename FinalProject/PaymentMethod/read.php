@@ -5,6 +5,9 @@ require_once('../Settings/settings.php');
 require_once('../PaymentMethod/paymentClass.php');
 require_once("../Asset/head.php");
 require_once("../Asset/header.php");
+?>
+<h2 class = "page-title" id="pad">Payment Methods</h2>
+<?php
 Payment::read($connection, $_SESSION['ID']);
 ?>
 <p class = "center"><a href="create.php" class = "center"> Add </a></p>;

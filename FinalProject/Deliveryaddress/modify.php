@@ -15,7 +15,9 @@ if(count($_POST)>0){
     Delivery::update($connection, $street, $city, $state, $zip_code, $_GET['id']);
 }
 ?>
+
 <div class ="center-screen">
+<h2 class = "page-title">Modify Delivery Address</h2>
 <form method="POST">
     Street: <input type="text" name="street" /><br>
     City: <input type="text" name="city" /><br>

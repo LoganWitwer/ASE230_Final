@@ -6,6 +6,7 @@ require_once("../Asset/header.php");
 session_start();
 ?>
 <body>
+    <h2 class = "page-title">Order History</h2>
 <?php
 Order::history($connection);
 ?>

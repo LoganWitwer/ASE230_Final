@@ -8,7 +8,9 @@ require_once("../Asset/header.php");
 session_start();
 $orderitems = $_SESSION['cart'];
 ?>
-<div  id = "border" class = "center-screen border" >
+
+<div  id = "border" class = "checkout border" >
+<h2 class = "page-title" id="pad">Checkout</h2>
 <?php
 
 //$_SESSION['cart'];
@@ -29,12 +31,16 @@ foreach($orderitems as $order){
     $query1=$connection->prepare('SELECT * FROM paymentMethod WHERE userID = ?');
     $query1-> execute([$_SESSION['ID']]);
 
-    if(count($_POST)>0){
+    if(isset($_POST['action']) && $_POST['action'] == 'Submit Order'){
         $payment = $_POST['payment'];
         $delivery = $_POST['delivery'];
         Order::create($connection, $price, $payment, $delivery, $orderitems);
         echo 'Order has been placed';
         $_SESSION['cart'] = [];
+    }
+    else if(isset($_POST['action']) && $_POST['action'] == 'Empty Cart'){
+        $_SESSION['cart'] = [];
+        header('location: ../Order/checkout.php');
     }
 
 ?>
@@ -59,7 +65,8 @@ foreach($orderitems as $order){
     }
     ?>
     </select><br><br>
-    <input type="submit">
+    <input type="submit" name="action" value = "Submit Order">
+    <input type="submit" name="action" value = "Empty Cart">
 
 </form>
 <p id="rest"><a href="../Pages/members_page.php">Back</a></p>
