@@ -5,11 +5,10 @@ require_once('itemClass.php');
 require_once("../Asset/head.php");
 require_once("../Asset/header.php");
 if(count($_POST)>0){
-    Item::modify($connection, $_POST['description'], $_POST['price'], $_POST['itemName']);
+    Item::modify($connection, $_POST['description'], $_POST['price'], $_POST['itemName'], $_GET['id']);
 }
 ?>
 <div class ="center-screen">
-<h2 class = "page-title" id="pad">Modify Item</h2>
 
 <form method="POST">
     Item Name: <input type="text" name="itemName" /><br>

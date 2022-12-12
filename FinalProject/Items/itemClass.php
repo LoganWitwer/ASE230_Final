@@ -41,8 +41,8 @@ class Item{
             echo 'Successfully deleted.';
         }
     
-        public static function modify($connection, $description, $price, $itemName){
-            $query=$connection->prepare('UPDATE items SET `description` = ?, `price` = ?, `itemName` = ?');
-            $query->execute([$description, $price, $itemName]);
+        public static function modify($connection, $description, $price, $itemName, $id){
+            $query=$connection->prepare('UPDATE items SET `description` = ?, `price` = ?, `itemName` = ? WHERE itemID = ?');
+            $query->execute([$description, $price, $itemName, $id]);
         }
 }
